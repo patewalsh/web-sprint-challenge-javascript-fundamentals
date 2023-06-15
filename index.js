@@ -62,17 +62,24 @@ const zooAnimals = [
   */
 
   function animalNames(zooAnimals){
-  const displayNames = [];
-  zooAnimals.forEach(animal => {
-  const name = animal.animal_name;
-  const scientific = animal.scientific_name;
-  const displayName = 'name: "${name}", scientific: "${scientific}"';
-  displayNames.push(displayName);
-  });
-  
-  return displayNames;
-
+    const displayNames =[];
+    zooAnimals.forEach(animal =>{
+      const name = `name: ${animal.animal_name}`;
+      const scientific = `scientific: ${animal.scientific_name}`;
+      const displayName = `${name}, ${scientific}`;
+      displayNames.push(displayName);
+    });
+    return displayNames;
   }
+ 
+ const displayNames = animalNames(zooAnimals);
+ console.log(displayNames);
+
+
+
+ 
+
+  
 
 
 
@@ -179,9 +186,10 @@ function multiply(a,b){
 */
 
 function greeting(firstName, lastName){
-  return 'Hello ${firstName} ${lastName}, nice to meet you!';
+  return `Hello ${firstName} ${lastName}, nice to meet you!`;
 }
- 
+
+
 
   
 // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
@@ -212,7 +220,7 @@ function CuboidMaker(options){
   
 }
 
-const cuboid = new CuboidMaker ({length:10, width: 5, height: 20});
+const cuboid = new CuboidMaker ({length:4, width: 5, height: 5});
 console.log(cuboid);
 
 
@@ -224,7 +232,7 @@ CuboidMaker.prototype.volume = function(){
   return this.length*this.width*this.height;
 };
 
-
+console.log(cuboid.volume());
 
 
 /* 🐴🐴🐴 Step 3: Surface Area Method 🐴🐴🐴
@@ -235,7 +243,7 @@ CuboidMaker.prototype.surfaceArea=function(){
   return 2* (this.length * this.width + this.length * this.height + this.width * this.height);
 };
 
-
+console.log(cuboid.surfaceArea());
 
 
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker (not auto graded)🐴🐴🐴
@@ -248,22 +256,35 @@ CuboidMaker.prototype.surfaceArea=function(){
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-//console.log(cuboid.volume()); // 100
-//console.log(cuboid.surfaceArea()); // 130
+console.log(cuboid.volume()); // 100
+console.log(cuboid.surfaceArea()); // 130
  
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //Using CuboidMakerTwo, take your prototypes from above and refactor into class syntax. Then, create an object called cuboidTwo that uses the new keyword to use our CuboidMakerTwo class.
  
 class CuboidMakerTwo{
-
+  constructor(dimensions){
+    this.length = dimensions.length;
+    this.width = dimensions.width;
+    this.height = dimensions.height;
+  }
+  volume(){
+    return this.length*this.width*this.height;
+  }
+surfaceArea(){
+  return 2*(this.length*this.width+this.length*this.height +this.width*this.height);
 }
+}
+
+const cuboidTwo=new
+CuboidMakerTwo({length:5, width:6, height:7});
 
 
 
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
-// console.log(cuboidTwo.volume()); // 100
+//console.log(cuboidTwo.volume()); // 100
 // console.log(cuboidTwo.surfaceArea()); // 130
 
 
